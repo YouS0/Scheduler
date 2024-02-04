@@ -1,0 +1,219 @@
+Enter resources , tasks and their specifications:
+3   4   5
+4
+t1  X   5
+t2  Z   8
+t3  Y   4
+t4  Z   2
+Which Algorithm(FSFC, SJF, RR): SJF
+
+((SJF))
+============================
+Ready Queue:  ['t1', 't2', 't3', 't4']
+Waiting Queue:  []
+Core: 1, Time: 1, Task: t4
+Core: 2, Time: 1, Task: t3
+Core: 3, Time: 1, Task: t1
+Core: 4, Time: 1, Task: t2
+============================
+Ready Queue:  ['t4', 't2', 't1', 't3']
+Waiting Queue:  []
+Core: 1, Time: 2, Task: t4
+Core: 2, Time: 2, Task: t3
+Core: 3, Time: 2, Task: t1
+Core: 4, Time: 2, Task: t2
+============================
+Ready Queue:  ['t2', 't3', 't1']
+Waiting Queue:  []
+Core: 1, Time: 3, Task: t3
+Core: 2, Time: 3, Task: t1
+Core: 3, Time: 3, Task: t2
+Core: 4, Time: 3, Task: Idle
+============================
+Ready Queue:  ['t1', 't2', 't3']
+Waiting Queue:  []
+Core: 1, Time: 4, Task: t3
+Core: 2, Time: 4, Task: t1
+Core: 3, Time: 4, Task: t2
+Core: 4, Time: 4, Task: Idle
+============================
+Ready Queue:  ['t2', 't1']
+Waiting Queue:  []
+Core: 1, Time: 5, Task: t1
+Core: 2, Time: 5, Task: t2
+Core: 3, Time: 5, Task: Idle
+Core: 4, Time: 5, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 6, Task: t2
+Core: 2, Time: 6, Task: Idle
+Core: 3, Time: 6, Task: Idle
+Core: 4, Time: 6, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 7, Task: t2
+Core: 2, Time: 7, Task: Idle
+Core: 3, Time: 7, Task: Idle
+Core: 4, Time: 7, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 8, Task: t2
+Core: 2, Time: 8, Task: Idle
+Core: 3, Time: 8, Task: Idle
+Core: 4, Time: 8, Task: Idle
+============================
+Traceback (most recent call last):
+  File "c:\Users\youne\OneDrive\Documents\OS-Final\simulator.py", line 278, in <module>
+    draw_gantt(cores)
+  File "c:\Users\youne\OneDrive\Documents\OS-Final\simulator.py", line 39, in draw_gantt
+    ax.set_xticks(range(plot_data[-1][1] + 2))
+                        ~~~~~~~~~^^^^
+IndexError: list index out of range
+PS C:\Users\youne\OneDrive\Documents\OS-Final> & C:/Users/youne/AppData/Local/Programs/Python/Python312/python.exe c:/Users/youne/OneDrive/Documents/OS-Final/simulator.py
+Enter resources , tasks and their specifications:
+3   4   5
+4
+t1  X   5
+t2  Z   8
+t3  Y   4
+t4  Z   2
+Which Algorithm(FSFC, SJF, RR): SJF
+
+((SJF))
+============================
+Ready Queue:  ['t1', 't2', 't3', 't4']
+Waiting Queue:  []
+Core: 1, Time: 1, Task: t4
+Core: 2, Time: 1, Task: t3
+Core: 3, Time: 1, Task: t1
+Core: 4, Time: 1, Task: t2
+============================
+Ready Queue:  ['t1', 't2', 't3', 't4']
+Waiting Queue:  []
+Core: 1, Time: 2, Task: t4
+Core: 2, Time: 2, Task: t3
+Core: 3, Time: 2, Task: t1
+Core: 4, Time: 2, Task: t2
+============================
+Ready Queue:  ['t3', 't1', 't2']
+Waiting Queue:  []
+Core: 1, Time: 3, Task: t3
+Core: 2, Time: 3, Task: t1
+Core: 3, Time: 3, Task: t2
+Core: 4, Time: 3, Task: Idle
+============================
+Ready Queue:  ['t2', 't1', 't3']
+Waiting Queue:  []
+Core: 1, Time: 4, Task: t3
+Core: 2, Time: 4, Task: t1
+Core: 3, Time: 4, Task: t2
+Core: 4, Time: 4, Task: Idle
+============================
+Ready Queue:  ['t2', 't1']
+Waiting Queue:  []
+Core: 1, Time: 5, Task: t1
+Core: 2, Time: 5, Task: t2
+Core: 3, Time: 5, Task: Idle
+Core: 4, Time: 5, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 6, Task: t2
+Core: 2, Time: 6, Task: Idle
+Core: 3, Time: 6, Task: Idle
+Core: 4, Time: 6, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 7, Task: t2
+Core: 2, Time: 7, Task: Idle
+Core: 3, Time: 7, Task: Idle
+Core: 4, Time: 7, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 8, Task: t2
+Core: 2, Time: 8, Task: Idle
+Core: 3, Time: 8, Task: Idle
+Core: 4, Time: 8, Task: Idle
+============================
+[[], [], [], []]
+Traceback (most recent call last):
+  File "c:\Users\youne\OneDrive\Documents\OS-Final\simulator.py", line 279, in <module>
+    draw_gantt(cores)
+  File "c:\Users\youne\OneDrive\Documents\OS-Final\simulator.py", line 39, in draw_gantt
+    ax.set_xticks(range(plot_data[-1][1] + 2))
+                        ~~~~~~~~~^^^^
+IndexError: list index out of range
+PS C:\Users\youne\OneDrive\Documents\OS-Final> & C:/Users/youne/AppData/Local/Programs/Python/Python312/python.exe c:/Users/youne/OneDrive/Documents/OS-Final/simulator.py
+Enter resources , tasks and their specifications:
+3   4   5
+4
+t1  X   5
+t2  Z   8
+t3  Y   4
+t4  Z   2
+Which Algorithm(FSFC, SJF, RR): SJF
+
+((SJF))
+============================
+Ready Queue:  ['t1', 't2', 't3', 't4']
+Waiting Queue:  []
+Core: 1, Time: 1, Task: t4
+Core: 2, Time: 1, Task: t3
+Core: 3, Time: 1, Task: t1
+Core: 4, Time: 1, Task: t2
+============================
+Ready Queue:  ['t1', 't2', 't3', 't4']
+Waiting Queue:  []
+Core: 1, Time: 2, Task: t4
+Core: 2, Time: 2, Task: t3
+Core: 3, Time: 2, Task: t1
+Core: 4, Time: 2, Task: t2
+============================
+Ready Queue:  ['t2', 't1', 't3']
+Waiting Queue:  []
+Core: 1, Time: 3, Task: t3
+Core: 2, Time: 3, Task: t1
+Core: 3, Time: 3, Task: t2
+Core: 4, Time: 3, Task: Idle
+============================
+Ready Queue:  ['t2', 't1', 't3']
+Waiting Queue:  []
+Core: 1, Time: 4, Task: t3
+Core: 2, Time: 4, Task: t1
+Core: 3, Time: 4, Task: t2
+Core: 4, Time: 4, Task: Idle
+============================
+Ready Queue:  ['t2', 't1']
+Waiting Queue:  []
+Core: 1, Time: 5, Task: t1
+Core: 2, Time: 5, Task: t2
+Core: 3, Time: 5, Task: Idle
+Core: 4, Time: 5, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 6, Task: t2
+Core: 2, Time: 6, Task: Idle
+Core: 3, Time: 6, Task: Idle
+Core: 4, Time: 6, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 7, Task: t2
+Core: 2, Time: 7, Task: Idle
+Core: 3, Time: 7, Task: Idle
+Core: 4, Time: 7, Task: Idle
+============================
+Ready Queue:  ['t2']
+Waiting Queue:  []
+Core: 1, Time: 8, Task: t2
+Core: 2, Time: 8, Task: Idle
+Core: 3, Time: 8, Task: Idle
+Core: 4, Time: 8, Task: Idle
+============================
+[[{1: 't4'}, {2: 't4'}, {3: 't3'}, {4: 't3'}, {5: 't1'}, {6: 't2'}, {7: 't2'}, {8: 't2'}], [{1: 't3'}, {2: 't3'}, {3: 't1'}, {4: 't1'}, {5: 't2'}], [{1: 't1'}, {2: 't1'}, {3: 't2'}, {4: 't2'}], [{1: 't2'}, {2: 't2'}]] 
