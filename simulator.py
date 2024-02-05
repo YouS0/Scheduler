@@ -67,6 +67,7 @@ class Task:
         self.task_id = task_id
         self.task_type = task_type
         self.duration = duration
+        self.orgduration = duration
         self.arrival_time = arrival_time
         self.required_resources = required_resources
         self.priority = priority
@@ -194,6 +195,40 @@ def RR_scheduler(core_num,tasks,resource_pool,lock,ctime):
         print(f"Core: {core_num}, Time: {ctime}, Task: Idle")
 
 
+def HRRN_scheduler(core_num,tasks,resource_pool,lock,ctime):
+    if len(tasks)>0:
+        lock.acquire() 
+        tasks.sort(key=lambda x: (-(x.orgduration - x.duration + x.orgduration)/x.orgduration , x.priority))  # Sort processes based on arrival time
+        task = tasks.pop(0)
+        if len(waiting) > 0 and waiting[0].priority > task.priority and waiting[0].required_resources[0] <= resource_pool[0].capacity and waiting[0].required_resources[1] <= resource_pool[1].capacity and waiting[0].required_resources[2] <= resource_pool[2].capacity:
+            tasks.insert(0,waiting.pop(0))
+        while task.required_resources[0] > resource_pool[0].capacity or task.required_resources[1] > resource_pool[1].capacity or task.required_resources[2] > resource_pool[2].capacity:
+            waiting.append(task)
+            if len(tasks)>0:
+                task = tasks.pop(0)
+            else:
+                break
+        resource_pool[0].capacity -= task.required_resources[0]
+        resource_pool[1].capacity -= task.required_resources[1]
+        resource_pool[2].capacity -= task.required_resources[2]
+        cores[core_num-1].append({ctime : task.task_id})
+        lock.release()
+
+        print(f"Core: {core_num}, Time: {ctime}, Task: {task.task_id}")
+        # print("Resource 1:",resource_pool[0].capacity," Resource 2:",resource_pool[1].capacity," Resource 3:",resource_pool[2].capacity)
+
+        process_execution(task)
+        time.sleep(1)
+        lock.acquire()
+        if task.duration > 0:
+            tasks.insert(0,task)
+        resource_pool[0].capacity += task.required_resources[0]
+        resource_pool[1].capacity += task.required_resources[1]
+        resource_pool[2].capacity += task.required_resources[2]
+        lock.release()
+    else: 
+        print(f"Core: {core_num}, Time: {ctime}, Task: Idle")
+
 def process_execution(task):
     task.duration -= 1
     
@@ -229,7 +264,7 @@ def read_input():
           # Priority is set based on the order of tasks
         arrival += 1
         tasks.append(Task(task_id, task_type, task_duration, arrival,required_resources, task_priority))
-    algo = input("Which Algorithm(FSFC, SJF, RR): ")
+    algo = input("Which Algorithm(FSFC, SJF, RR , HRRN): ")
     return resource_r1,resource_r2,resource_r3, tasks , algo
 
 if __name__ == "__main__":
@@ -263,9 +298,12 @@ if __name__ == "__main__":
                 t = threading.Thread(target=fcfs_scheduler , args=(i+1,tasks,resource_pool,shared_output_lock,ctime))
             elif algo.lower() == "sjf":
                 t = threading.Thread(target=sjf_scheduler , args=(i+1,tasks,resource_pool,shared_output_lock,ctime))
-            elif algo.lower() == "RR":
+            elif algo.lower() == "rr":
                 tasks.sort(key=lambda x: x.priority)  # priority sort for RR
                 t = threading.Thread(target=RR_scheduler , args=(i+1,tasks,resource_pool,shared_output_lock,ctime))
+            elif algo.lower() == "hrrn":
+                t = threading.Thread(target=HRRN_scheduler , args=(i+1,tasks,resource_pool,shared_output_lock,ctime))
+
             else:
                 print("Wrong Algorithm, please try again")
 
